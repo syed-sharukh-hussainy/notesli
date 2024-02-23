@@ -25,13 +25,13 @@ export default defineSchema({
     color: v.optional(v.string()),
     icon: v.optional(v.string()),
   }).index("by_user", ["userId"]),
-  users: defineTable({
-    userId: v.string(),
-    email: v.string(),
-    subscriptionId: v.optional(v.string()),
-    endsOn: v.optional(v.number()),
-    credits: v.number(),
-  })
-    .index("by_userId", ["userId"])
-    .index("by_subscriptionId", ["subscriptionId"]),
+  // users: defineTable({
+  //   userId: v.string(),
+  //   email: v.string(),
+  //   subscriptionId: v.optional(v.string()),
+  //   endsOn: v.optional(v.number()),
+  //   credits: v.number(),
+  // })
+  //   .index("by_userId", ["userId"])
+  //   .index("by_subscriptionId", ["subscriptionId"]),
 });

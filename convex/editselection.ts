@@ -2,13 +2,14 @@ import { v } from "convex/values";
 import { action } from "./_generated/server";
 import { OpenAI } from "openai";
 
-const openai = new OpenAI();
-
 export const shortSummary = action({
   args: {
     prompt: v.string(),
   },
   handler: async (ctx, args) => {
+    const openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY!,
+    });
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [
@@ -35,6 +36,9 @@ export const fixSpellingAndGrammar = action({
     prompt: v.string(),
   },
   handler: async (ctx, args) => {
+    const openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY!,
+    });
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [
